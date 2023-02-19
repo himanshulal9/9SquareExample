@@ -17,6 +17,7 @@ export const useStyles = makeStyles({
   },
   table: {
     backgroundColor: '#08161b',
+    color: ' #839496',
     padding: '5px',
     margin: '0px auto',
   },
@@ -25,8 +26,10 @@ export const useStyles = makeStyles({
   },
   today: {
     backgroundColor: '#839496',
+    color: '#08161b',
   },
   highlighted: {
     color: '#839496',
+    backgroundColor: '#08161b',
   },
 });

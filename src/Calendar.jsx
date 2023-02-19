@@ -1,11 +1,11 @@
 import React from 'react';
 import { useStyles } from './CalendarStyle';
 
-function Calendar({ date }) {
+function Calendar({ date: datesProps }) {
   const styles = useStyles();
-  console.log('style ===>', styles);
-  const year = date.getFullYear();
-  const month = date.getMonth();
+  const dateObj = new Date(datesProps);
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth();
 
   // Calculate the number of days in the month
   const numDaysInMonth = new Date(year, month + 1, 0).getDate();
@@ -29,7 +29,7 @@ function Calendar({ date }) {
   return (
     <div className={styles.wrapper}>
       <h5 className={styles.month}>
-        {date.toLocaleString('default', { month: 'long' })} {year}
+        {dateObj.toLocaleString('default', { month: 'long' })} {year}
       </h5>
       <table className={styles.table}>
         <thead>
@@ -59,10 +59,10 @@ function Calendar({ date }) {
                     return <td key={columnIndex}></td>;
                   }
                   const isToday =
-                    date.toDateString() === new Date().toDateString();
+                    date.toDateString() === new Date(datesProps).toDateString();
                   const isHighlighted =
-                    date.toDateString() ===
-                    new Date(year, month, date.getDate()).toDateString();
+                    date.toDateString() === new Date(datesProps).toDateString();
+
                   return (
                     <td
                       key={columnIndex}
